@@ -1,0 +1,45 @@
+<section>
+  <div class="tracker">Calorie-Tracker-App</div>
+  <hr />
+  <div>
+    <div class="inp">
+      <input
+        type="text"
+        placeholder="What did you eat ?"
+        (change)="onChangeTitleInput($event)"
+      />
+      <!-- on change title input is a function call which takes a value in input. Every time we type something in title
+     input ,it gets saved somewhere  -->
+      <input
+        type="number"
+        placeholder="Enter no. of calories"
+        (change)="onChangeCaloriesInput($event)"
+      />
+
+      <!-- similarly on change calorie input is a function call which takes a number in input. Every time we type a number
+  in this input it gets saved somewhere -->
+      <button (click)="onAddItem()">Add-Meal</button>
+    </div>
+
+    <!-- on add item is a function call which will add title and number from the input's and add it to our ul -->
+    <ul class="ul" *ngIf="calorieItems.length > 0" style="min-height: 40px">
+      <!-- ngIf implies that everytime the specified condition is true our Array/items will be appended to the ul -->
+      <li
+        *ngFor="let item of calorieItems; let i = index"
+        (click)="onRemoveItem(i)"
+      >
+        <!-- ngFor implies a for of loop here and(i=index) implies that this for of loop has an index -->
+        <!--on remove item calls a function that removes an item from the appended list every time we 
+        click on that item, it has an arguement of i or index because it will only remove the item we specify/click
+      -->
+        {{ item.title }} - {{ item.calories }}
+        <!-- simple interpolation-->
+      </li>
+    </ul>
+    <br />
+    <hr />
+    <p>Total Calories - {{ getTotalCalories() }}</p>
+
+    <!--get total calories is a function call that takes the calorie input values and adds(+) them to the body-->
+  </div>
+</section>
