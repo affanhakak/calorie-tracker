@@ -11,7 +11,7 @@ export class AppComponent {
   calorieItems: CalorieItem[] = [
     // calorie items is an array of items which are already printed on the body.
     {
-      title: 'Regular-Pizza(click on me to remove me)',
+      title: '(Test-Item) Regular-Pizza(click on me to remove me)',
       calories: 240,
     },
   ];
@@ -35,8 +35,6 @@ export class AppComponent {
       calories: this.currentCalories, // whatever is printed in calories value.
     };
     this.calorieItems = [...this.calorieItems, newItem];
-    this.currentCalories = 0;
-    this.currentTitle = '';
     /* implies that ...this.calorieItems stays in the ul
      that is an already existing array of items. new Item means new items are appended to the li and added to the ul*/
   }
